@@ -3,106 +3,286 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Youna — Support</title>
+    <title>Youna — Teen Period Tracker</title>
+    <meta name="description" content="Youna is a private period tracker made for teens. Log your cycle, track symptoms, and see predictions — all on your device, no accounts needed.">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --purple: #7c5cbf;
+            --purple-light: #ede8f8;
+            --rose: #d9607a;
+            --text: #1d1d1f;
+            --muted: #6e6e73;
+            --bg: #fff;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.7;
-            color: #1d1d1f;
-            background: #fff;
-            padding: 2rem 1.5rem;
-            max-width: 720px;
+            color: var(--text);
+            background: var(--bg);
+            line-height: 1.6;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(160deg, #f8f3ff 0%, #fff0f3 100%);
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+        }
+        .app-icon {
+            width: 96px;
+            height: 96px;
+            background: linear-gradient(135deg, var(--purple), var(--rose));
+            border-radius: 22px;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+        }
+        .hero h1 {
+            font-size: 2.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+        .hero .tagline {
+            font-size: 1.2rem;
+            color: var(--muted);
+            margin-bottom: 2rem;
+        }
+        .badge {
+            display: inline-block;
+            background: #000;
+            color: #fff;
+            padding: 0.7rem 1.6rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            transition: opacity 0.15s;
+        }
+        .badge:hover { opacity: 0.8; }
+
+        /* Features */
+        .section {
+            padding: 4rem 1.5rem;
+            max-width: 780px;
             margin: 0 auto;
         }
-        h1 { font-size: 2rem; margin-bottom: 0.25rem; }
-        .subtitle { color: #6e6e73; margin-bottom: 2rem; }
-        h2 { font-size: 1.25rem; margin-top: 2rem; margin-bottom: 0.5rem; }
-        p, li { margin-bottom: 0.75rem; }
-        ul { padding-left: 1.25rem; }
-        .card {
-            background: #f5f5f7;
-            border-radius: 12px;
-            padding: 1.25rem 1.5rem;
-            margin: 1rem 0;
+        .section-label {
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--purple);
+            margin-bottom: 0.5rem;
         }
-        .card h3 { font-size: 1.05rem; margin-bottom: 0.4rem; }
-        .card p:last-child { margin-bottom: 0; }
-        a { color: #0066cc; }
-        .contact-box {
-            background: #f0f0ff;
-            border-left: 4px solid #5856d6;
-            padding: 1rem 1.25rem;
-            border-radius: 6px;
-            margin: 1.5rem 0;
+        .section h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
         }
-        footer {
+        .section p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 560px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.25rem;
             margin-top: 3rem;
-            padding-top: 1.5rem;
+        }
+        .feature-card {
+            background: #f5f5f7;
+            border-radius: 16px;
+            padding: 1.5rem;
+        }
+        .feature-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .feature-card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            line-height: 1.5;
+        }
+
+        /* Privacy band */
+        .privacy-band {
+            background: var(--purple-light);
+            padding: 4rem 1.5rem;
+            text-align: center;
+        }
+        .privacy-band h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .privacy-band p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        .privacy-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+            margin-top: 1.75rem;
+        }
+        .pill {
+            background: #fff;
+            border-radius: 100px;
+            padding: 0.45rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--purple);
+        }
+
+        /* Pricing band */
+        .pricing-band {
+            padding: 4rem 1.5rem;
+            text-align: center;
+            background: #fff;
+        }
+        .pricing-band h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .pricing-band p {
+            color: var(--muted);
+            font-size: 1.05rem;
+            max-width: 480px;
+            margin: 0 auto 2rem;
+        }
+        .price-tag {
+            display: inline-block;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple);
+            background: var(--purple-light);
+            border-radius: 12px;
+            padding: 0.6rem 1.5rem;
+            margin-bottom: 1.75rem;
+        }
+
+        footer {
             border-top: 1px solid #e5e5e7;
-            color: #6e6e73;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: var(--muted);
             font-size: 0.875rem;
         }
-        footer a { color: #6e6e73; }
+        footer a { color: var(--muted); margin: 0 0.5rem; }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .section h2 { font-size: 1.6rem; }
+            .privacy-band h2, .pricing-band h2 { font-size: 1.6rem; }
+        }
     </style>
 </head>
 <body>
 
-<h1>Youna Support</h1>
-<p class="subtitle">Simple, private period tracking</p>
+<!-- Hero -->
+<section class="hero">
+    <div class="app-icon">🌸</div>
+    <h1>Youna</h1>
+    <p class="tagline">Teen Period Tracker — Private by Design</p>
+    <a class="badge" href="https://apps.apple.com/app/id6759964434">Download on the App Store</a>
+</section>
 
-<h2>About the App</h2>
-<p>Youna is a simple, privacy-first period tracking app. It helps you log your cycle, track symptoms like mood, pain, and energy levels, and see predictions for upcoming periods. All your data stays on your device — no accounts, no cloud, no tracking.</p>
+<!-- Features -->
+<div class="section">
+    <p class="section-label">What Youna does</p>
+    <h2>Everything you need to know your cycle</h2>
+    <p>Track periods, log symptoms, and see predictions — with info cards that explain what's happening in your body.</p>
 
-<h2>Frequently Asked Questions</h2>
-
-<div class="card">
-    <h3>How do I log a period?</h3>
-    <p>Tap on a date in the calendar view to mark it as a period day. You can log the start of your period and the app will help you track the duration.</p>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">📅</div>
+            <h3>Cycle Tracking</h3>
+            <p>Log period days and see predictions for your next cycle right on the calendar.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔮</div>
+            <h3>Period Predictions</h3>
+            <p>Smart predictions based on your history, improving with every cycle you log.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📝</div>
+            <h3>Symptom Log</h3>
+            <p>Record mood, pain, and energy levels. Spot patterns across your cycle.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📖</div>
+            <h3>Info Cards</h3>
+            <p>Understand what's happening in each phase of your cycle, written for teens.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📲</div>
+            <h3>Home Screen Widget</h3>
+            <p>See your cycle at a glance without even opening the app.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🗓</div>
+            <h3>Apple Calendar Sync</h3>
+            <p>Optionally send period and fertile window events to your Apple Calendar.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <h3>Face ID Lock</h3>
+            <p>Keep your data behind Face ID or a passcode for extra peace of mind.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">👻</div>
+            <h3>Stealth Icon</h3>
+            <p>Disguise the app as a calculator on your home screen.</p>
+        </div>
+    </div>
 </div>
 
-<div class="card">
-    <h3>How do I track symptoms?</h3>
-    <p>Select a day on the calendar and use the symptom panel to record your mood, pain level, and energy level for that day.</p>
-</div>
+<!-- Privacy -->
+<section class="privacy-band">
+    <h2>Your data stays on your phone</h2>
+    <p>Youna never sends your health data anywhere. No account required, no cloud, no tracking — just your phone.</p>
+    <div class="privacy-pills">
+        <span class="pill">No account required</span>
+        <span class="pill">No cloud storage</span>
+        <span class="pill">No ads</span>
+        <span class="pill">No data sharing</span>
+        <span class="pill">Works fully offline</span>
+    </div>
+</section>
 
-<div class="card">
-    <h3>How are predictions calculated?</h3>
-    <p>The app uses your logged period history to calculate your average cycle length, then predicts when your next period is likely to start. The more cycles you log, the more accurate predictions become.</p>
-</div>
-
-<div class="card">
-    <h3>Is my data backed up?</h3>
-    <p>Your data is stored locally on your device. It is included in your standard iPhone backup (iCloud or computer backup) along with the rest of your app data. We do not have a separate cloud backup service.</p>
-</div>
-
-<div class="card">
-    <h3>How do I delete my data?</h3>
-    <p>Delete the Youna app from your device. All data is permanently removed when the app is uninstalled.</p>
-</div>
-
-<div class="card">
-    <h3>Does the app work offline?</h3>
-    <p>Yes — the app works entirely offline. It never connects to the internet.</p>
-</div>
-
-<div class="card">
-    <h3>What iOS version do I need?</h3>
-    <p>Youna requires iOS 17.0 or later.</p>
-</div>
-
-<h2>Contact Us</h2>
-
-<div class="contact-box">
-    <p>Having an issue or have a suggestion? We'd love to hear from you.</p>
-    <p><strong>Email:</strong> <a href="mailto:marinaeeg@gmail.com">marinaeeg@gmail.com</a></p>
-</div>
-
-<p>We typically respond within 48 hours.</p>
+<!-- Pricing -->
+<section class="pricing-band">
+    <h2>No subscription. Ever.</h2>
+    <p>Pay once for Premium and unlock all features forever. No monthly fees, no paywalls after purchase.</p>
+    <div class="price-tag">$1.99 one-time</div>
+    <br>
+    <a class="badge" href="https://apps.apple.com/app/id6759964434">Get Youna on the App Store</a>
+</section>
 
 <footer>
-    <p><a href="privacy.html">Privacy Policy</a></p>
-    <p>&copy; 2026 Youna. All rights reserved.</p>
+    <a href="support.html">Support</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <p style="margin-top: 0.75rem;">&copy; 2026 Youna. All rights reserved.</p>
 </footer>
 
 </body>

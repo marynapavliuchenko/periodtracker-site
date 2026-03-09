@@ -33,13 +33,10 @@
         .app-icon {
             width: 96px;
             height: 96px;
-            background: linear-gradient(135deg, var(--purple), var(--rose));
             border-radius: 22px;
             margin: 0 auto 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
         }
         .hero h1 {
             font-size: 2.75rem;
@@ -201,7 +198,7 @@
 
 <!-- Hero -->
 <section class="hero">
-    <div class="app-icon">🌸</div>
+    <img class="app-icon" src="icon.png" alt="Youna app icon">
     <h1>Youna</h1>
     <p class="tagline">Teen Period Tracker — Private by Design</p>
     <a class="badge" href="https://apps.apple.com/app/id6759964434">Download on the App Store</a>
@@ -253,6 +250,11 @@
             <div class="feature-icon">👻</div>
             <h3>Stealth Icon</h3>
             <p>Disguise the app as a calculator on your home screen.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">💊</div>
+            <h3>Medication Reminders</h3>
+            <p>Set daily reminders for the pill or any medication, with custom times and days.</p>
         </div>
     </div>
 </div>
